@@ -1,0 +1,20 @@
+{
+    "splashTexts": [
+      "echo 'Hello, World!'",
+      "npm install is-odd",
+      "npm install is-even",
+      "ping 66.183.206.221",
+      "python3 ./stay-hydrated.py",
+      "curl -L https://dharrop.com",
+      "git commit -m 'added splash texts'",
+      "git add .env",
+      "cowsay 'moo'",
+      "sudo rm -rf /*",
+      "neofetch",
+      "make",
+      ":(){ :|:& };:",
+      "[ $((RANDOM % 6)) -eq 0 ] && shutdown",
+      "while true; do echo 'echo'; done",
+      "rm -fr"
+    ]
+  }
