@@ -4,7 +4,7 @@
       "npm install is-odd",
       "npm install is-even",
       "ping 66.183.206.221",
-      "python3 ./stay-hydrated.py",
+      "echo 'stay hydrated'",
       "curl -L https://dharrop.com",
       "git commit -m 'added splash texts'",
       "git add .env",
@@ -15,6 +15,13 @@
       ":(){ :|:& };:",
       "[ $((RANDOM % 6)) -eq 0 ] && shutdown",
       "while true; do echo 'echo'; done",
-      "rm -fr"
+      "rm -fr",
+      "ssh dharrop@192.168.1.32",
+      "git clone https://github.com/dktharrop/dharrop-web",
+      "cbonsai",
+      "seq 2 100 | awk '{for(i=2;i*i<=$1;i++)if($1%i==0)next}1'",
+      "cargo",
+      "docker compose up -d",
+      "npm run dev"
     ]
   }

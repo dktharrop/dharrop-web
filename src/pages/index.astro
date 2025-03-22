@@ -10,7 +10,7 @@ const randomSplash = splashTexts.splashTexts[Math.floor(Math.random() * splashTe
     <section class="landing">
         <img src="src/assets/red-panda.jpg" alt="Landing Image" class="circular-image" />
         <div class="content">
-            <span class="title">dharrop.com</span>
+            <span class="title">dh@rrop</span>
             <div class=splash>
                 <TerminalText text={randomSplash} typingSpeed={200} showCursor={true} />
             </div>
@@ -32,7 +32,6 @@ const randomSplash = splashTexts.splashTexts[Math.floor(Math.random() * splashTe
         flex-direction: column;
         align-items: left;
         gap: 20px; /* Space between the image and text */
-        width: 200px;
     }
 
     .circular-image {
@@ -51,5 +50,6 @@ const randomSplash = splashTexts.splashTexts[Math.floor(Math.random() * splashTe
 
     .splash {
         font-size: 2rem; /* Large text */
+        width: 0;
     }
 </style>

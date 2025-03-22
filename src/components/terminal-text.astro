@@ -76,8 +76,8 @@ const {
 
   // Calculate the width based on the number of characters
   const totalCharacters = (prompt + " " + fullText).length;
-  const charWidth = fontSize * 0.6; // Approximate width of a monospace character
-  const terminalWidth = totalCharacters * charWidth + 10; // Add padding (10px on each side)
+  const charWidth = fontSize * 0.55; // Approximate width of a monospace character
+  const terminalWidth = totalCharacters * charWidth + charWidth;
 
   // Set the terminal's width
   terminal.style.width = `${terminalWidth}px`;
