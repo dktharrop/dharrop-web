@@ -1,11 +1,53 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '../layouts/layout.astro';
+import TerminalText from '../components/terminal-text.astro';
 ---
 
 <Layout>
-	<Welcome />
+    <section class="landing">
+        <img src="src/assets/red-panda.jpg" alt="Landing Image" class="circular-image" />
+        <div class="content">
+            <span class="title">dharrop.com</span>
+            <div class=splash>
+                <TerminalText text="dh@rrop" typingSpeed={60} showCursor={true} />
+            </div>
+
+        </div>
+    </section>
 </Layout>
+
+<style>
+    .landing {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        gap: 20px; /* Space between the image and text */
+        width: 200px;
+    }
+
+    .circular-image {
+        width: 256px;
+        height: 256px;
+        border-radius: 50%; /* Makes the image circular */
+        object-fit: cover; /* Ensures the image fits within the circle */
+        border: 8px solid white; /* Optional: Add a white border */
+        margin: 64px;
+    }
+
+    .title {
+        font-size: 4rem;
+        font-weight: bold;
+    }
+
+    .splash {
+        font-size: 2rem; /* Large text */
+        margin-top: -10px; /* Shift the text up slightly */
+    }
+</style>

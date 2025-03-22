@@ -1,0 +1,33 @@
+---
+// NavBar.astro
+---
+
+<style>
+	.navbar {
+	  background-color: #333; /* Dark gray background */
+	  padding: 10px 20px;
+	  display: flex;
+	  justify-content: flex-end; /* Align items to the right */
+	  align-items: center;
+	  height:60px;
+	}
+  
+	.navbar a {
+	  color: white; /* White text color */
+	  text-decoration: none; /* Remove underline */
+	  margin-left: 20px; /* Space between items */
+	  font-weight: 500;
+	}
+  
+	.navbar a:hover {
+	  text-decoration: underline; /* Underline on hover */
+	}
+  </style>
+  
+  <div class="navbar">
+	<a href="#home">Home</a>
+	<a href="#about">About</a>
+	<a href="#services">Services</a>
+	<a href="#contact">Contact</a>
+  </div>
+  

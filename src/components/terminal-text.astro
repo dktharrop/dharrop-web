@@ -1,0 +1,111 @@
+---
+// terminal-text.astro
+export interface Props {
+  text: string; // The text to type out
+  typingSpeed?: number; // Average wpm
+  showCursor?: boolean; // Whether to show the blinking cursor
+  prompt?: string; // The prompt to display before the text
+}
+
+const {
+  text,
+  typingSpeed = 100,
+  showCursor = true, // Default to showing the cursor
+  prompt = "$", // Default to bash $ prompt
+} = Astro.props;
+---
+
+<div
+  class="terminal"
+  data-text={text}
+  data-typing-speed={typingSpeed}
+  data-show-cursor={showCursor}
+  data-prompt={prompt}
+  tabindex="-1"
+>
+  <span class="typed-text"></span><span class="cursor"></span>
+</div>
+
+<style>
+  .terminal {
+    font-family: "Roboto Mono", monospace;
+    color: white;
+    background-color: #000;
+    padding: 20px;
+    border-radius: 8px;
+    display: inline-block;
+    position: relative;
+  }
+
+  .typed-text {
+    display: inline;
+    text-align: left;
+  }
+
+  .cursor {
+    display: inline-block;
+    background-color: white;
+    width: 12px;
+    animation: blink 1s steps(1, start) infinite;
+    margin-left: 0;
+    vertical-align: sub;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script type="module">
+  const terminal = document.querySelector(".terminal");
+  const cursor = terminal.querySelector(".cursor");
+  const typedText = terminal.querySelector(".typed-text");
+
+  const fullText = terminal.dataset.text; // Get the `text` prop from the dataset
+  const prompt = terminal.dataset.prompt;
+  const typingSpeed = parseInt(terminal.dataset.typingSpeed, 10) || 40; // Get the `typingSpeed` prop from the dataset
+  const showCursor = terminal.dataset.showCursor === "true"; // Get the `showCursor` prop from the dataset
+
+  const msPerChar = 12000 / typingSpeed; // Convert WPM to ms per character
+
+  // Extract font size from the terminal's computed style
+  const computedStyle = window.getComputedStyle(terminal);
+  const fontSize = parseFloat(computedStyle.fontSize); // Get font size in pixels
+
+  // Calculate the width based on the number of characters
+  const totalCharacters = (prompt + " " + fullText).length;
+  const charWidth = fontSize * 0.6; // Approximate width of a monospace character
+  const terminalWidth = totalCharacters * charWidth + 10; // Add padding (10px on each side)
+
+  // Set the terminal's width
+  terminal.style.width = `${terminalWidth}px`;
+
+  // Set the cursor's height to match the font size
+  cursor.style.height = `${fontSize}px`;
+  cursor.style.width = `${Math.round(fontSize / 2)}px`;
+
+  // Hide the cursor if `showCursor` is false
+  if (!showCursor) {
+    cursor.style.display = "none";
+  }
+
+  typedText.textContent += prompt + " ";
+
+  let index = 0;
+  function typeText() {
+    if (index < fullText.length) {
+      typedText.textContent += fullText[index];
+      index++;
+
+      const rand = Math.random() * (1.4 - 0.6) + 0.6;
+
+      setTimeout(typeText, Math.floor(msPerChar * rand));
+
+      console.log(`Typed character: ${fullText[index]} (Index: ${index})`); // Debug: Log each character typed
+    }
+  }
+
+  typeText();
+</script>
