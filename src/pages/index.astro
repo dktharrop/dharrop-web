@@ -28,16 +28,18 @@ import TerminalText from '../components/terminal-text.astro';
         display: flex;
         flex-direction: column;
         align-items: left;
-        gap: 20px; /* Space between the image and text */
+        gap: 20px;
     }
 
     .circular-image {
         width: 256px;
         height: 256px;
-        border-radius: 50%; /* Makes the image circular */
-        object-fit: cover; /* Ensures the image fits within the circle */
-        border: 8px solid white;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 8px solid var(--border-color);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Subtle drop shadow */
         margin: 64px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .title {
@@ -46,7 +48,7 @@ import TerminalText from '../components/terminal-text.astro';
     }
 
     .splash {
-        font-size: 2rem; /* Large text */
+        font-size: 2rem;
         width: 0;
     }
 </style>
