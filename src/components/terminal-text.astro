@@ -1,7 +1,7 @@
 ---
 // terminal-text.astro
 export interface Props {
-  text: string; // The text to type out
+  text?: string; // The text to type out
   typingSpeed?: number; // Average wpm
   showCursor?: boolean; // Whether to show the blinking cursor
   prompt?: string; // The prompt to display before the text
@@ -63,7 +63,16 @@ const {
   const cursor = terminal.querySelector(".cursor");
   const typedText = terminal.querySelector(".typed-text");
 
-  const fullText = terminal.dataset.text; // Get the `text` prop from the dataset
+  // load splash-texts.json texts in public folder
+  //import splashTexts from "/splash-texts.json";
+
+  const splashTexts = await fetch("/splash-texts.json").then((res) => res.json());
+
+  console.log(splashTexts);
+  console.log("test");
+
+  const fullText = (terminal.dataset.text === undefined) ? splashTexts.splashTexts[Math.floor(Math.random() * splashTexts.splashTexts.length)] : terminal.dataset.text; // Get the `text` prop from the dataset
+  
   const prompt = terminal.dataset.prompt;
   const typingSpeed = parseInt(terminal.dataset.typingSpeed, 10) || 40; // Get the `typingSpeed` prop from the dataset
   const showCursor = terminal.dataset.showCursor === "true"; // Get the `showCursor` prop from the dataset
@@ -88,7 +97,7 @@ const {
 
   // Hide the cursor if `showCursor` is false
   if (!showCursor) {
-    cursor.style.display = "none";
+    cursor.style.display = "none"; 
   }
 
   typedText.textContent += prompt + " ";
@@ -102,8 +111,6 @@ const {
       const rand = Math.random() * (1.4 - 0.6) + 0.6;
 
       setTimeout(typeText, Math.floor(msPerChar * rand));
-
-      console.log(`Typed character: ${fullText[index]} (Index: ${index})`); // Debug: Log each character typed
     }
   }
 

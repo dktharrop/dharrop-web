@@ -1,9 +1,6 @@
 ---
 import Layout from '../layouts/layout.astro';
 import TerminalText from '../components/terminal-text.astro';
-import splashTexts from '../assets/splash-texts.json';
-
-const randomSplash = splashTexts.splashTexts[Math.floor(Math.random() * splashTexts.splashTexts.length)];
 ---
 
 <Layout>
@@ -12,7 +9,7 @@ const randomSplash = splashTexts.splashTexts[Math.floor(Math.random() * splashTe
         <div class="content">
             <span class="title">dh@rrop</span>
             <div class=splash>
-                <TerminalText text={randomSplash} typingSpeed={200} showCursor={true} />
+                <TerminalText typingSpeed={200} showCursor={true} />
             </div>
 
         </div>
