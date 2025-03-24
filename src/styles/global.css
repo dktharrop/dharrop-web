@@ -15,10 +15,8 @@
 /* Light theme */
 html.light-theme {
   --bg-color: #e0e0e0;
-  --text-color: #333;
+  --text-color: #000;
   --navbar-bg: #f5f5f5;
-  /* --terminal-bg: #f0f0f0;
-    --terminal-text: #333; */
   --terminal-bg: #000;
   --terminal-text: #fff;
   --link-color: #0066cc;

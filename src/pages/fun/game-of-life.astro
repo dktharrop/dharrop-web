@@ -1,9 +1,14 @@
 ---
 import Layout from "../../layouts/layout.astro";
+import Life from "../../components/life.tsx";
+
+// Add a glider to the initial state
+const initialCells = new Set(["1,0", "2,1", "0,2", "1,2", "2,2"]);
+
+// Convert to JSON string to pass to client component
+const initialState = JSON.stringify(Array.from(initialCells));
 ---
 
 <Layout>
-  <div class="game-container">
-    <canvas id="gameCanvas"></canvas>
-  </div>
+  <Life client:only initialState={initialState} />
 </Layout>

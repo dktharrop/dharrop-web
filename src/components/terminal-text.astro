@@ -9,7 +9,7 @@ export interface Props {
 
 const {
   text,
-  typingSpeed = 100,
+  typingSpeed,
   showCursor = true, // Default to showing the cursor
   prompt = "$", // Default to bash $ prompt
 } = Astro.props;
@@ -77,8 +77,12 @@ const {
         ]
       : terminal.dataset.text;
 
+  // if typing speed undefined set random 60 to 260
+  const typingSpeed = terminal.dataset.typingSpeed
+    ? parseInt(terminal.dataset.typingSpeed, 10)
+    : Math.floor(Math.random() * 200) + 60;
+
   const prompt = terminal.dataset.prompt;
-  const typingSpeed = parseInt(terminal.dataset.typingSpeed, 10) || 40;
   const showCursor = terminal.dataset.showCursor === "true";
 
   const msPerChar = 12000 / typingSpeed;

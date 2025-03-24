@@ -1,12 +1,13 @@
 ---
+import TerminalText from "../components/terminal-text.astro";
 import Layout from "../layouts/layout.astro";
 
 const projects = [
   {
     id: "game-of-life",
     title: "Conway's Game of Life",
-    description: "Conway's Game of Life in JavaScript.",
-    tags: ["JavaScript", "Canvas", "Interactive"],
+    description: 'the original "zero player game"',
+    tags: [],
     image: "/glider.svg",
     link: "/fun/game-of-life",
   },
@@ -16,7 +17,11 @@ const projects = [
 <Layout>
   <div class="fun-container">
     <h1>fun</h1>
-    <p class="intro">i will definitely change this placeholder text later</p>
+    <p class="intro">
+      i'm not a frontend dev. as a result, most of the projects on this page
+      were created through heavy usage of generative ai. don't consider this
+      page as a portfolio, but rather a collection of fun experiments.
+    </p>
 
     <div class="projects-grid">
       {
@@ -26,7 +31,9 @@ const projects = [
               <img src={project.image} alt={project.title} />
             </div>
             <div class="project-content">
-              <h2>{project.title}</h2>
+              <h2>
+                <TerminalText text={project.id} />
+              </h2>
               <p>{project.description}</p>
               <div class="project-tags">
                 {project.tags.map((tag) => (
@@ -34,7 +41,7 @@ const projects = [
                 ))}
               </div>
               <a href={project.link} class="project-link">
-                Explore
+                play
               </a>
             </div>
           </div>
@@ -63,6 +70,7 @@ const projects = [
     font-size: 1.2rem;
     margin-bottom: 2rem;
     opacity: 0.8;
+    color: var(--text-color);
   }
 
   .projects-grid {
@@ -80,6 +88,7 @@ const projects = [
     flex-direction: column;
     height: 100%;
     border: 1px solid transparent;
+    background-color: var(--navbar-bg);
   }
 
   .project-card:hover {
@@ -142,7 +151,7 @@ const projects = [
   .project-link {
     display: inline-block;
     background-color: var(--link-color);
-    color: #fff;
+    color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
