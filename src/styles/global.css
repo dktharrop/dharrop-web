@@ -2,6 +2,7 @@
 
 /* Dark theme (default) */
 :root {
+  --navbar-height: 72px;
   --bg-color: #222;
   --text-color: #fff;
   --navbar-bg: #333;
@@ -33,6 +34,9 @@ body {
   font-family: "Roboto Mono", monospace;
   background-color: var(--bg-color);
   color: var(--text-color);
-  overflow: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+main {
+  padding-top: var(--navbar-height);
 }

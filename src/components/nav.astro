@@ -7,9 +7,9 @@
     <a href="/" class="logo-link">@</a>
     <span class="nav-divider"></span>
 
-    <a href="#fun">fun</a>
-    <a href="#contact">contact</a>
-    <a href="#about">about</a>
+    <a href="/fun">fun</a>
+    <a href="/contact">contact</a>
+    <a href="/about">about</a>
   </div>
 
   <div class="nav-controls">
@@ -57,7 +57,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    position: fixed;
+    height: var(--navbar-height);
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .nav-links {

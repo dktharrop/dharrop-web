@@ -1,0 +1,193 @@
+---
+import Layout from "../layouts/layout.astro";
+
+const projects = [
+  {
+    id: "game-of-life",
+    title: "Conway's Game of Life",
+    description: "Conway's Game of Life in JavaScript.",
+    tags: ["JavaScript", "Canvas", "Interactive"],
+    image: "/glider.svg",
+    link: "/fun/game-of-life",
+  },
+];
+---
+
+<Layout>
+  <div class="fun-container">
+    <h1>fun</h1>
+    <p class="intro">i will definitely change this placeholder text later</p>
+
+    <div class="projects-grid">
+      {
+        projects.map((project) => (
+          <div class="project-card" data-id={project.id}>
+            <div class="project-image">
+              <img src={project.image} alt={project.title} />
+            </div>
+            <div class="project-content">
+              <h2>{project.title}</h2>
+              <p>{project.description}</p>
+              <div class="project-tags">
+                {project.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+              <a href={project.link} class="project-link">
+                Explore
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .fun-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--link-color);
+    display: inline-block;
+  }
+
+  .intro {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid transparent;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: var(--link-color);
+  }
+
+  .project-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
+  }
+
+  .project-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .project-content h2 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+  }
+
+  .project-content p {
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    flex-grow: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .project-link {
+    display: inline-block;
+    background-color: var(--link-color);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+
+  .project-link:hover {
+    background-color: rgba(102, 179, 255, 0.8);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .fun-container {
+      padding: 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<script>
+  // Add any interactive functionality if needed
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".project-card");
+
+    cards.forEach((card) => {
+      card.addEventListener("click", (e) => {
+        // Don't trigger if clicking on the link directly
+        if (e.target && (e.target as HTMLElement).tagName !== "A") {
+          const link = card.querySelector(".project-link") as HTMLAnchorElement;
+          if (link) {
+            link.click();
+          }
+        }
+      });
+    });
+  });
+</script>
