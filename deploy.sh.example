@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Configuration variables
+REMOTE_USER="your-username"
+REMOTE_HOST="your-server-hostname"
+REMOTE_DIR="/path/to/remote/web/directory"
+LOCAL_DIST="./dist"
+
+# Print a status message
+echo "🚀 Starting deployment process..."
+
+# Build the Astro project
+echo "📦 Building Astro project..."
+npx astro build
+if [ $? -ne 0 ]; then
+  echo "❌ Build failed! Aborting deployment."
+  exit 1
+fi
+
+echo "✅ Build successful!"
+
+# Make sure the local dist directory exists
+if [ ! -d "$LOCAL_DIST" ]; then
+  echo "❌ Local dist directory not found. Build may have failed."
+  exit 1
+fi
+
+# Empty the remote directory
+echo "🗑️  Cleaning remote directory..."
+ssh $REMOTE_USER@$REMOTE_HOST "rm -rf $REMOTE_DIR/*"
+if [ $? -ne 0 ]; then
+  echo "❌ Failed to clean remote directory. Check your SSH connection and permissions."
+  exit 1
+fi
+
+# Copy the local dist directory to the remote server
+echo "📤 Uploading new build to server..."
+scp -r $LOCAL_DIST/* $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/
+if [ $? -ne 0 ]; then
+  echo "❌ Failed to upload files. Check your connection and permissions."
+  exit 1
+fi
+
+echo "✅ Deployment complete! Your site is now live."
