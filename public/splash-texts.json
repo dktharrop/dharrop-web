@@ -23,7 +23,7 @@
     "npm run dev",
     "npm run build",
     "pacman -S arch-btw",
-    "wall 'red pandas are cool",
+    "wall 'red pandas are cool'",
     "echo -e '\\a'",
     "sudo apt-get install -y cowsay",
     "sudo apt-get install -y fortune",
