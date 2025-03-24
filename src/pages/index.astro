@@ -1,54 +1,57 @@
 ---
-import Layout from '../layouts/layout.astro';
-import TerminalText from '../components/terminal-text.astro';
+// index.astro
+
+import Layout from "../layouts/layout.astro";
+import TerminalText from "../components/terminal-text.astro";
 ---
 
 <Layout>
-    <section class="landing">
-        <img src="red-panda.jpg" alt="Landing Image" class="circular-image" />
-        <div class="content">
-            <span class="title">dh@rrop</span>
-            <div class=splash>
-                <TerminalText typingSpeed={200} showCursor={true} />
-            </div>
-
-        </div>
-    </section>
+  <section class="landing">
+    <img src="red-panda.jpg" alt="Landing Image" class="circular-image" />
+    <div class="content">
+      <span class="title">dh@rrop</span>
+      <div class="splash">
+        <TerminalText typingSpeed={200} showCursor={true} />
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style>
-    .landing {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 90vh;
-    }
+  .landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+  }
 
-    .content {
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        gap: 20px;
-    }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 20px;
+  }
 
-    .circular-image {
-        width: 256px;
-        height: 256px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 8px solid var(--border-color);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Subtle drop shadow */
-        margin: 64px;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
+  .circular-image {
+    width: 256px;
+    height: 256px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 8px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Subtle drop shadow */
+    margin: 64px;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
 
-    .title {
-        font-size: 4rem;
-        font-weight: bold;
-    }
+  .title {
+    font-size: 4rem;
+    font-weight: bold;
+  }
 
-    .splash {
-        font-size: 2rem;
-        width: 0;
-    }
+  .splash {
+    font-size: 2rem;
+    width: 0;
+  }
 </style>

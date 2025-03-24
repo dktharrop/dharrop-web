@@ -14,6 +14,7 @@ const {
   prompt = "$", // Default to bash $ prompt
 } = Astro.props;
 ---
+
 <div
   class="terminal"
   data-text={text}
@@ -62,13 +63,20 @@ const {
   const cursor = terminal.querySelector(".cursor");
   const typedText = terminal.querySelector(".typed-text");
 
-  const splashTexts = await fetch("/splash-texts.json").then((res) => res.json());
+  const splashTexts = await fetch("/splash-texts.json").then((res) =>
+    res.json()
+  );
 
   console.log(splashTexts);
   console.log("test");
 
-  const fullText = (terminal.dataset.text === undefined) ? splashTexts.splashTexts[Math.floor(Math.random() * splashTexts.splashTexts.length)] : terminal.dataset.text;
-  
+  const fullText =
+    terminal.dataset.text === undefined
+      ? splashTexts.splashTexts[
+          Math.floor(Math.random() * splashTexts.splashTexts.length)
+        ]
+      : terminal.dataset.text;
+
   const prompt = terminal.dataset.prompt;
   const typingSpeed = parseInt(terminal.dataset.typingSpeed, 10) || 40;
   const showCursor = terminal.dataset.showCursor === "true";
@@ -88,7 +96,7 @@ const {
   cursor.style.width = `${Math.round(fontSize / 2)}px`;
 
   if (!showCursor) {
-    cursor.style.display = "none"; 
+    cursor.style.display = "none";
   }
 
   typedText.textContent += prompt + " ";
