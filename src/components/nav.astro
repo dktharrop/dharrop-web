@@ -68,20 +68,20 @@
 	}
 	
 	/* Show/hide based on current theme */
-	html.dark-theme .sun-icon {
-	  display: block;
-	}
-	
-	html.dark-theme .moon-icon {
+	html.light-theme .sun-icon {
 	  display: none;
 	}
 	
-	html:not(.dark-theme) .sun-icon {
-	  display: none;
+	html.light-theme .moon-icon {
+	  display: block;
 	}
 	
-	html:not(.dark-theme) .moon-icon {
+	html:not(.light-theme) .sun-icon {
 	  display: block;
+	}
+	
+	html:not(.light-theme) .moon-icon {
+	  display: none;
 	}
   </style>
   
@@ -94,21 +94,21 @@
 	  // Check for saved theme preference or use OS preference
 	  const savedTheme = localStorage.getItem('theme');
 	  if (savedTheme) {
-		htmlElement.classList.toggle('dark-theme', savedTheme === 'dark');
+		htmlElement.classList.toggle('light-theme', savedTheme === 'light');
 	  } else {
 		// Check OS preference
-		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-		htmlElement.classList.toggle('dark-theme', prefersDark);
+		const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+		htmlElement.classList.toggle('light-theme', prefersLight);
 	  }
 	  
 	  // Toggle theme when button is clicked
 	  if (themeToggle) {
 		themeToggle.addEventListener('click', () => {
-		  htmlElement.classList.toggle('dark-theme');
+		  htmlElement.classList.toggle('light-theme');
 		  
 		  // Save preference
-		  const isDark = htmlElement.classList.contains('dark-theme');
-		  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+		  const isLight = htmlElement.classList.contains('light-theme');
+		  localStorage.setItem('theme', isLight ? 'light' : 'dark');
 		});
 	  }
 	});
