@@ -15,62 +15,45 @@ const projects = [
 ---
 
 <Layout>
-  <div class="fun-container">
+  <div class="intro">
     <h1>fun</h1>
-    <p class="intro">
-      i'm not a frontend dev. as a result, most of the projects on this page
-      were created through heavy usage of generative ai. don't consider this
-      page as a portfolio, but rather a collection of fun experiments.
+    <p>
+      i'm not a frontend developer. most of the projects listed below were made
+      with heavy usage of generative ai. don't consider this a portfolio, but
+      rather a collection of fun experiments.
     </p>
+  </div>
 
-    <div class="projects-grid">
-      {
-        projects.map((project) => (
-          <div class="project-card" data-id={project.id}>
-            <div class="project-image">
-              <img src={project.image} alt={project.title} />
-            </div>
-            <div class="project-content">
-              <h2>
-                <TerminalText text={project.id} />
-              </h2>
-              <p>{project.description}</p>
-              <div class="project-tags">
-                {project.tags.map((tag) => (
-                  <span class="tag">{tag}</span>
-                ))}
-              </div>
-              <a href={project.link} class="project-link">
-                play
-              </a>
-            </div>
+  <div class="projects-grid">
+    {
+      projects.map((project) => (
+        <div class="project-card" data-id={project.id}>
+          <div class="project-image">
+            <img src={project.image} alt={project.title} />
           </div>
-        ))
-      }
-    </div>
+          <div class="project-content">
+            <h2>
+              <TerminalText text={project.id} />
+            </h2>
+            <p>{project.description}</p>
+            <div class="project-tags">
+              {project.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+            <a href={project.link} class="project-link">
+              play
+            </a>
+          </div>
+        </div>
+      ))
+    }
   </div>
 </Layout>
 
 <style>
-  .fun-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--link-color);
-    display: inline-block;
-  }
-
   .intro {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    opacity: 0.8;
-    color: var(--text-color);
+    margin-bottom: 1.5rem;
   }
 
   .projects-grid {

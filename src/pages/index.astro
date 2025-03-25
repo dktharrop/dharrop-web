@@ -6,7 +6,7 @@ import TerminalText from "../components/terminal-text.astro";
 ---
 
 <Layout>
-  <section class="landing">
+  <div class="landing">
     <img src="red-panda.jpg" alt="Landing Image" class="circular-image" />
     <div class="content">
       <span class="title">dh@rrop</span>
@@ -14,15 +14,16 @@ import TerminalText from "../components/terminal-text.astro";
         <TerminalText />
       </div>
     </div>
-  </section>
+  </div>
 </Layout>
 
 <style>
   .landing {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 90vh;
+    justify-content: center;
+    min-height: 80vh;
+    width: 100%;
   }
 
   .content {
@@ -37,7 +38,7 @@ import TerminalText from "../components/terminal-text.astro";
     height: 256px;
     border-radius: 50%;
     object-fit: cover;
-    border: 8px solid var(--border-color);
+    border: 8px solid var(--bold-color);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Subtle drop shadow */
     margin: 64px;
     transition:
@@ -48,6 +49,7 @@ import TerminalText from "../components/terminal-text.astro";
   .title {
     font-size: 4rem;
     font-weight: bold;
+    color: var(--bold-color);
   }
 
   .splash {
