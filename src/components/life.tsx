@@ -400,7 +400,7 @@ const Grid: React.FC<GridProps> = ({ initialState }) => {
               width: `${cellSize}px`,
               height: `${cellSize}px`,
               border: "none",
-              backgroundColor: "var(--text-color)",
+              backgroundColor: "var(--bold-color)",
               position: "absolute",
             }}
           />
