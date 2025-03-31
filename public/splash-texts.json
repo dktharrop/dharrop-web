@@ -28,6 +28,8 @@
     "sudo apt-get install -y cowsay",
     "sudo apt-get install -y fortune",
     "fortune | cowsay",
-    "sudo apt-get install -y cbonsai"
+    "sudo apt-get install -y cbonsai",
+    "grep grep ~/.bash_history",
+    "man man"
   ]
 }
